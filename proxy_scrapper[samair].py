@@ -21,25 +21,17 @@ for u in URL:
 #making File
     f = open('proxy.txt','a')
 
-    table = soup.find_all('tr',attrs = {'class':'anon'})
-    if table > 0:
-        for t in table:
-            for d in t.find('td'):
-                f.write(d + '\n')
+    class_types = ['anon','elite','trans']
 
 
-    table = soup.find_all('tr',attrs = {'class':'elite'})
-    if table > 0:
-        for t in table:
-            for d in t.find('td'):
-                f.write(d + '\n')
+    for c in class_types:
+         table = soup.find_all('tr',attrs = {'class':c})
+         if table > 0:
+             for t in table:
+                 for d in t.find('td'):
+                     f.write(d + '\n')
 
 
-    table = soup.find_all('tr',attrs = {'class':'trans'})
-    if table > 0:
-        for t in table:
-            for d in t.find('td'):
-                f.write(d + '\n')
     time.sleep(1)
     f.close()
 
